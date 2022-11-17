@@ -49,8 +49,12 @@ endef
 
 define Package/$(PKG_NAME)/postinst
 #!/bin/sh
-chmod +x $(1)/usr/bin/lingti
-chmod +x $(1)/etc/init.d/lingti
+sudo cp $(PKG_BUILD_DIR)/$(PKG_NAME)/lingti /var/bin/
+sudo cp $(PKG_BUILD_DIR)/$(PKG_NAME)/lingti /usr/bin/
+sudo cp $(PKG_BUILD_DIR)/$(PKG_NAME)/lingti /etc/init.d/
+sudo chmod +x $(1)/var/bin/lingti
+sudo chmod +x $(1)/usr/bin/lingti
+sudo chmod +x $(1)/etc/init.d/lingti
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
